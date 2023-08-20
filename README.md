@@ -14,3 +14,4 @@ At Academia do Flutter de Rodrigo Rahman
 - This project was built with MVVM architecture (Model-View-ViewModel)
 
 - I used Riverpod which is a reactive caching framework for Flutter/Dart
+- Pattern matching concept
