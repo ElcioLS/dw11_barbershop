@@ -1,4 +1,4 @@
-import 'package:dw11_barbershop/src/core/ui/restClient/rest_client.dart';
+import 'package:dw11_barbershop/src/core/restClient/rest_client.dart';
 import 'package:dw11_barbershop/src/repositories/user/user_repository.dart';
 import 'package:dw11_barbershop/src/repositories/user/user_repository_impl.dart';
 import 'package:dw11_barbershop/src/services/users_login/user_login_service.dart';

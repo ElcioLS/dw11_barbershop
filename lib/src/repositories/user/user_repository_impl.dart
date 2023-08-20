@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:dw11_barbershop/src/core/exceptions/auth_exception.dart';
 import 'package:dw11_barbershop/src/core/fp/either.dart';
-import 'package:dw11_barbershop/src/core/ui/restClient/rest_client.dart';
+import 'package:dw11_barbershop/src/core/restClient/rest_client.dart';
 
 import './user_repository.dart';
 
