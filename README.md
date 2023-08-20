@@ -1,16 +1,14 @@
-# dw11_barbershop
+# adf_dw11_flutter_barbershop
+BarberShop project in Flutter.
+Held in August 2023
+At Academia do Flutter de Rodrigo Rahman
 
-A new Flutter project.
+##About the project
+- I created an application to manage appointments in a barbershop.
+- Users and associates can schedule appointments with customers using a series of new flutter 3 features in a fast and fully responsive app.
 
-## Getting Started
+#Architecture and dependencies
 
-This project is a starting point for a Flutter application.
+- This project was built with MVVM architecture (Model-View-ViewModel)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- I used Riverpod which is a reactive caching framework for Flutter/Dart
