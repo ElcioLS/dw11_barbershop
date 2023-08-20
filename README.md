@@ -7,7 +7,7 @@ At Academia do Flutter de Rodrigo Rahman
 
 ## About the project
 - I created an application to manage appointments in a barbershop.
-- Users and associates can schedule appointments with customers using a series of new flutter 3 features in a fast and fully responsive app.
+- Users and associates can schedule appointments with customers using a series of new flutter and Dart 3 features in a fast and fully responsive app.
 
 #Architecture and dependencies
 
