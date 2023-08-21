@@ -22,8 +22,10 @@ class LoginVm extends _$LoginVm {
 
     switch (result) {
       case Success():
-        final userModel = await ref.read(getMeProvider.future);
+        ref.invalidate(getMeProvider);
+        ref.invalidate(getMyBarbershopProvider);
 
+        final userModel = await ref.read(getMeProvider.future);
         switch (userModel) {
           case UserModelADM():
             state = state.copyWith(status: LoginStateStatus.admLogin);
@@ -31,7 +33,6 @@ class LoginVm extends _$LoginVm {
             state = state.copyWith(status: LoginStateStatus.employeeLogin);
         }
         break;
-
       case Failure(exception: ServiceException(:final message)):
         state = state.copyWith(
           status: LoginStateStatus.error,
