@@ -1,4 +1,5 @@
 import 'package:asyncstate/widget/async_state_builder.dart';
+import 'package:dw11_barbershop/src/core/ui/barbershop_nav_global_key.dart';
 import 'package:dw11_barbershop/src/core/ui/barbershop_theme.dart';
 import 'package:dw11_barbershop/src/core/ui/widgets/barbershop_loader.dart';
 import 'package:dw11_barbershop/src/features/splash/auth/login/login_page.dart';
@@ -18,6 +19,7 @@ class BarbershopApp extends StatelessWidget {
           title: 'Dart Week 2023',
           theme: BarbershopTheme.themeData,
           navigatorObservers: [asyncNavigatorObserver],
+          navigatorKey: BarbershopNavGlobalKey.instance.navkey,
           routes: {
             '/': (_) => const SplashPage(),
             '/auth/login': (_) => const LoginPage(),
