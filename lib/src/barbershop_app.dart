@@ -12,15 +12,17 @@ class BarbershopApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return AsyncStateBuilder(
       customLoader: const BarbershopLoader(),
-      builder: (AsyncNavigatorObserver) {
+      builder: (asyncNavigatorObserver) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Dart Week 2023',
           theme: BarbershopTheme.themeData,
-          navigatorObservers: [AsyncNavigatorObserver],
+          navigatorObservers: [asyncNavigatorObserver],
           routes: {
             '/': (_) => const SplashPage(),
             '/auth/login': (_) => const LoginPage(),
+            '/home/adm': (_) => const Text('ADM'),
+            '/home/employee': (_) => const Text('Employee'),
           },
         );
       },
