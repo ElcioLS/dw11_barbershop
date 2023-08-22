@@ -15,7 +15,9 @@ At Academia do Flutter de Rodrigo Rahman
 
 - I used Riverpod which is a reactive caching framework for Flutter/Dart
 - Pattern matching concept
-
+- Records
+- Sealed classes
+- Destructuring
 
 
 
