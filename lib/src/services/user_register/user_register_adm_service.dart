@@ -3,7 +3,7 @@ import 'package:dw11_barbershop/src/core/fp/nil.dart';
 
 import '../../core/fp/either.dart';
 
-abstract interface class UserRegisterService {
+abstract interface class UserRegisterAdmService {
   Future<Either<ServiceException, Nil>> execute(
     ({
       String name,
