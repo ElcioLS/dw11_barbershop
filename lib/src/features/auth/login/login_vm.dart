@@ -2,9 +2,10 @@ import 'package:asyncstate/asyncstate.dart';
 import 'package:dw11_barbershop/src/core/exceptions/service_exception.dart';
 import 'package:dw11_barbershop/src/core/fp/either.dart';
 import 'package:dw11_barbershop/src/core/provider/application_providers.dart';
-import 'package:dw11_barbershop/src/features/splash/auth/login/login_state.dart';
 import 'package:dw11_barbershop/src/model/user_model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+import 'login_state.dart';
 
 part 'login_vm.g.dart';
 

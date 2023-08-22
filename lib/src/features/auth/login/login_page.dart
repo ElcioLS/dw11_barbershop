@@ -1,11 +1,12 @@
 import 'package:dw11_barbershop/src/core/ui/constants.dart';
 import 'package:dw11_barbershop/src/core/ui/helpers/form_helper.dart';
 import 'package:dw11_barbershop/src/core/ui/helpers/messages.dart';
-import 'package:dw11_barbershop/src/features/splash/auth/login/login_state.dart';
-import 'package:dw11_barbershop/src/features/splash/auth/login/login_vm.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:validatorless/validatorless.dart';
+
+import 'login_state.dart';
+import 'login_vm.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
   const LoginPage({super.key});

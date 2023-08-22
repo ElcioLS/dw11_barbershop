@@ -1,6 +1,7 @@
 import 'package:dw11_barbershop/src/core/ui/constants.dart';
-import 'package:dw11_barbershop/src/features/splash/auth/login/login_page.dart';
 import 'package:flutter/material.dart';
+
+import '../auth/login/login_page.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -84,6 +85,6 @@ class _SplashPageState extends State<SplashPage> {
           ),
         ),
       ),
-    );
+    ); 
   }
 }

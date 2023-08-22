@@ -1,5 +1,5 @@
 import 'package:dw11_barbershop/src/core/ui/helpers/form_helper.dart';
-import 'package:dw11_barbershop/src/features/splash/register/user_register_vm.dart';
+import 'package:dw11_barbershop/src/features/register/user/user_register_vm.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:validatorless/validatorless.dart';
