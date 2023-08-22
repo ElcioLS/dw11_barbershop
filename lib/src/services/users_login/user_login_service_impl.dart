@@ -24,7 +24,7 @@ class UserLoginServiceImpl implements UserLoginService {
       case Success(value: final accessToken):
         final sp = await SharedPreferences.getInstance();
         sp.setString(LocalStorageKeys.accessToken, accessToken);
-        return Success(nill);
+        return Success(nil);
 
       case Failure(:final exception):
         return switch (exception) {

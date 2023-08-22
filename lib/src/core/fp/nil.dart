@@ -5,4 +5,4 @@ class Nil {
   }
 }
 
-Nil get nill => Nil();
+Nil get nil => Nil();
