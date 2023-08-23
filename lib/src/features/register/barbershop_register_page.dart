@@ -31,9 +31,12 @@ class BarbershopRegisterPage extends StatelessWidget {
                 },
               ),
               const SizedBox(height: 24),
-              const HoursPanel(
+              HoursPanel(
                 startTime: 6,
                 endTime: 23,
+                onHourPressed: (int value) {
+                  print('Hora clicada é $value');
+                },
               ),
               const SizedBox(height: 24),
               ElevatedButton(
