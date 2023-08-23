@@ -25,7 +25,11 @@ class BarbershopRegisterPage extends StatelessWidget {
                 decoration: const InputDecoration(label: Text('Email')),
               ),
               const SizedBox(height: 24),
-              const WeekdaysPanel(),
+              WeekdaysPanel(
+                onDayPressed: (value) {
+                  print('Dia clicado é $value');
+                },
+              ),
               const SizedBox(height: 24),
               const HoursPanel(
                 startTime: 6,
