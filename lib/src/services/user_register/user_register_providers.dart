@@ -5,7 +5,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'user_register_providers.g.dart';
 
-@Riverpod(keepAlive: true)
+@riverpod
 UserRegisterAdmService userRegisterAdmService(UserRegisterAdmServiceRef ref) =>
     UserRegisterAdmServiceImpl(
       userRepository: ref.watch(userRepositoryProvider),

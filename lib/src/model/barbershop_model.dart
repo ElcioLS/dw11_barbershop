@@ -3,7 +3,7 @@ class BarbershopModel {
   final String name;
   final String email;
   final List<String> openingDays;
-  final List<String> openingHours;
+  final List<int> openingHours;
 
   BarbershopModel({
     required this.id,
@@ -27,7 +27,7 @@ class BarbershopModel {
           name: name,
           email: email,
           openingDays: openingDays.cast<String>(),
-          openingHours: openingHours.cast(),
+          openingHours: openingHours.cast<int>(),
         ),
       _ => throw ArgumentError('Invalid Json'),
     };
