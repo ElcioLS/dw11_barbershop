@@ -9,7 +9,7 @@ abstract interface class BarbershopRepository {
       ({
         String name,
         String email,
-        List<String> openinDays,
+        List<String> openingDays,
         List<int> openingHours,
       }) data);
 

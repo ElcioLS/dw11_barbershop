@@ -45,7 +45,7 @@ class BarbershopRepositoryImpl implements BarbershopRepository {
       ({
         String email,
         String name,
-        List<String> openinDays,
+        List<String> openingDays,
         List<int> openingHours
       }) data) async {
     try {
@@ -53,7 +53,7 @@ class BarbershopRepositoryImpl implements BarbershopRepository {
         'user_id': '#userAuthRef',
         'name': data.name,
         'email': data.email,
-        'opening_days': data.openinDays,
+        'opening_days': data.openingDays,
         'opening_hours': data.openingHours,
       });
       return Success(nil);

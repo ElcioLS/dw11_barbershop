@@ -35,7 +35,7 @@ class _BarbershopRegisterPageState
     final barbershopRegisterVm =
         ref.watch(barbershopRegisterVmProvider.notifier);
 
-    ref.listen(barbershopRegisterVmProvider, (_, status) {
+    ref.listen(barbershopRegisterVmProvider, (_, state) {
       switch (state.status) {
         case BarbershopRegisterStateStatus.initial:
           break;
