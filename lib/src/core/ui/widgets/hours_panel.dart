@@ -3,16 +3,17 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 
 class HoursPanel extends StatelessWidget {
+  final List<int>? enabledTimes;
   final int startTime;
   final int endTime;
   final ValueChanged<int> onHourPressed;
 
-  const HoursPanel({
-    Key? key,
-    required this.startTime,
-    required this.endTime,
-    required this.onHourPressed,
-  }) : super(key: key);
+  const HoursPanel(
+      {super.key,
+      required this.startTime,
+      required this.endTime,
+      required this.onHourPressed,
+      this.enabledTimes});
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +34,7 @@ class HoursPanel extends StatelessWidget {
           children: [
             for (int i = startTime; i <= endTime; i++)
               TimeButton(
+                enabledTimes: enabledTimes,
                 label: '${i.toString().padLeft(2, '0')}:00',
                 value: i,
                 onPressed: onHourPressed,
@@ -45,15 +47,17 @@ class HoursPanel extends StatelessWidget {
 }
 
 class TimeButton extends StatefulWidget {
+  final List<int>? enabledTimes;
   final String label;
   final int value;
   final ValueChanged<int> onPressed;
   const TimeButton({
-    Key? key,
+    super.key,
     required this.label,
     required this.value,
     required this.onPressed,
-  }) : super(key: key);
+    this.enabledTimes,
+  });
 
   @override
   State<TimeButton> createState() => _TimeButtonState();
@@ -68,14 +72,25 @@ class _TimeButtonState extends State<TimeButton> {
     var buttonColor = selected ? ColorsConstants.brow : Colors.white;
     final Color buttonBorderColor =
         selected ? ColorsConstants.brow : ColorsConstants.grey;
+
+    final TimeButton(:value, :label, :enabledTimes, :onPressed) = widget;
+
+    final disableTime = enabledTimes != null && !enabledTimes.contains(value);
+
+    if (disableTime) {
+      buttonColor = Colors.grey[400]!;
+    }
+
     return InkWell(
       borderRadius: BorderRadius.circular(8),
-      onTap: () {
-        setState(() {
-          selected = !selected;
-          widget.onPressed(widget.value);
-        });
-      },
+      onTap: disableTime
+          ? null
+          : () {
+              setState(() {
+                selected = !selected;
+                onPressed(value);
+              });
+            },
       child: Container(
         width: 64,
         height: 36,
@@ -88,7 +103,7 @@ class _TimeButtonState extends State<TimeButton> {
         ),
         child: Center(
           child: Text(
-            widget.label,
+            label,
             style: TextStyle(
               fontSize: 12,
               color: textColor,
