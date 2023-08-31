@@ -16,6 +16,7 @@ class HomeAdmVm extends _$HomeAdmVm {
     final BarbershopModel(id: barbershopId) =
         await ref.read(getMyBarbershopProvider.future);
     final me = await ref.watch(getMeProvider.future);
+
     final employeesResult = await repository.getEmployees(barbershopId);
 
     switch (employeesResult) {
