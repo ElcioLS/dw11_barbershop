@@ -23,7 +23,7 @@ class ScheduleRepositoryImpl implements ScheduleRepository {
         int userId
       }) scheduleData) async {
     try {
-      await restClient.auth.post('schedules', data: {
+      await restClient.auth.post('/schedules', data: {
         'barbershop_id': scheduleData.barbershopId,
         'user_id': scheduleData.userId,
         'client_name': scheduleData.clientName,
