@@ -18,12 +18,12 @@ class ScheduleModel {
   factory ScheduleModel.fromMap(Map<String, dynamic> json) {
     switch (json) {
       case {
-          'id': int id,
-          'barbershop_id': int barbershopId,
-          'user_id': int userId,
-          'client_name': String clientName,
-          'date': String scheduleDate,
-          'time': int hour,
+          'id': final int id,
+          'barbershop_id': final int barbershopId,
+          'user_id': final int userId,
+          'client_name': final String clientName,
+          'date': final String scheduleDate,
+          'time': final int hour,
         }:
         return ScheduleModel(
           id: id,

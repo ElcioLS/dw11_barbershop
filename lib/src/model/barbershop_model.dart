@@ -13,12 +13,22 @@ class BarbershopModel {
     required this.openingHours,
   });
 
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'name': name,
+      'email': email,
+      'opening_days': openingDays,
+      'opening_hours': openingHours,
+    };
+  }
+
   factory BarbershopModel.fromMap(Map<String, dynamic> json) {
     return switch (json) {
       {
-        'id': int id,
-        'name': String name,
-        'email': String email,
+        'id': final int id,
+        'name': final String name,
+        'email': final String email,
         'opening_days': final List openingDays,
         'opening_hours': final List openingHours,
       } =>

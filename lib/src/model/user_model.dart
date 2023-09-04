@@ -15,7 +15,7 @@ sealed class UserModel {
     return switch (json['profile']) {
       'ADM' => UserModelADM.fromMap(json),
       'EMPLOYEE' => UserModelEmployee.fromMap(json),
-      _ => throw ArgumentError('User profile not found'),
+      _ => throw ArgumentError('User profile not found.'),
     };
   }
 }
@@ -23,6 +23,7 @@ sealed class UserModel {
 class UserModelADM extends UserModel {
   final List<String>? workDays;
   final List<int>? workHours;
+
   UserModelADM({
     required super.id,
     required super.name,
@@ -31,6 +32,17 @@ class UserModelADM extends UserModel {
     this.workDays,
     this.workHours,
   });
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'name': name,
+      'email': email,
+      'avatar': avatar,
+      'work_days': workDays,
+      'work_hours': workHours,
+    };
+  }
 
   factory UserModelADM.fromMap(Map<String, dynamic> json) {
     return switch (json) {
@@ -66,6 +78,18 @@ class UserModelEmployee extends UserModel {
     required this.workHours,
     super.avatar,
   });
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'name': name,
+      'email': email,
+      'avatar': avatar,
+      'barbershop_id': barbershopId,
+      'work_days': workDays,
+      'work_hours': workHours,
+    };
+  }
 
   factory UserModelEmployee.fromMap(Map<String, dynamic> json) {
     return switch (json) {
