@@ -20,6 +20,7 @@ class EmployeeSchedulePage extends ConsumerStatefulWidget {
 
 class _EmployeeSchedulePageState extends ConsumerState<EmployeeSchedulePage> {
   late DateTime dateSelected;
+  var ignoreFirstLoad = true;
 
   @override
   void initState() {
@@ -69,6 +70,19 @@ class _EmployeeSchedulePageState extends ConsumerState<EmployeeSchedulePage> {
                   showDatePickerButton: true,
                   showTodayButton: true,
                   dataSource: AppointmentDs(schedules: schedules),
+                  onViewChanged: (viewChangedDetails) {
+                    if (ignoreFirstLoad) {
+                      ignoreFirstLoad = false;
+                      return;
+                    }
+                    ref
+                        .read(employeeScheduleVmProvider(userId, dateSelected)
+                            .notifier)
+                        .changeDate(
+                          userId,
+                          viewChangedDetails.visibleDates.first,
+                        );
+                  },
                   onTap: (calendarTapDetails) {
                     if (calendarTapDetails.appointments != null &&
                         calendarTapDetails.appointments!.isNotEmpty) {
