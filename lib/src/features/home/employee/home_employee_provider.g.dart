@@ -30,6 +30,8 @@ class _SystemHash {
   }
 }
 
+typedef GetTotalSchedulesTodayRef = AutoDisposeFutureProviderRef<int>;
+
 /// See also [getTotalSchedulesToday].
 @ProviderFor(getTotalSchedulesToday)
 const getTotalSchedulesTodayProvider = GetTotalSchedulesTodayFamily();
@@ -76,10 +78,10 @@ class GetTotalSchedulesTodayFamily extends Family<AsyncValue<int>> {
 class GetTotalSchedulesTodayProvider extends AutoDisposeFutureProvider<int> {
   /// See also [getTotalSchedulesToday].
   GetTotalSchedulesTodayProvider(
-    int userId,
-  ) : this._internal(
+    this.userId,
+  ) : super.internal(
           (ref) => getTotalSchedulesToday(
-            ref as GetTotalSchedulesTodayRef,
+            ref,
             userId,
           ),
           from: getTotalSchedulesTodayProvider,
@@ -91,43 +93,9 @@ class GetTotalSchedulesTodayProvider extends AutoDisposeFutureProvider<int> {
           dependencies: GetTotalSchedulesTodayFamily._dependencies,
           allTransitiveDependencies:
               GetTotalSchedulesTodayFamily._allTransitiveDependencies,
-          userId: userId,
         );
 
-  GetTotalSchedulesTodayProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.userId,
-  }) : super.internal();
-
   final int userId;
-
-  @override
-  Override overrideWith(
-    FutureOr<int> Function(GetTotalSchedulesTodayRef provider) create,
-  ) {
-    return ProviderOverride(
-      origin: this,
-      override: GetTotalSchedulesTodayProvider._internal(
-        (ref) => create(ref as GetTotalSchedulesTodayRef),
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        userId: userId,
-      ),
-    );
-  }
-
-  @override
-  AutoDisposeFutureProviderElement<int> createElement() {
-    return _GetTotalSchedulesTodayProviderElement(this);
-  }
 
   @override
   bool operator ==(Object other) {
@@ -141,20 +109,6 @@ class GetTotalSchedulesTodayProvider extends AutoDisposeFutureProvider<int> {
 
     return _SystemHash.finish(hash);
   }
-}
-
-mixin GetTotalSchedulesTodayRef on AutoDisposeFutureProviderRef<int> {
-  /// The parameter `userId` of this provider.
-  int get userId;
-}
-
-class _GetTotalSchedulesTodayProviderElement
-    extends AutoDisposeFutureProviderElement<int>
-    with GetTotalSchedulesTodayRef {
-  _GetTotalSchedulesTodayProviderElement(super.provider);
-
-  @override
-  int get userId => (origin as GetTotalSchedulesTodayProvider).userId;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member

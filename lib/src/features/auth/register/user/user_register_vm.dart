@@ -12,7 +12,7 @@ enum UserRegisterStateStatus {
   error,
 }
 
-@riverpod
+@Riverpod()
 class UserRegisterVm extends _$UserRegisterVm {
   @override
   UserRegisterStateStatus build() => UserRegisterStateStatus.initial;

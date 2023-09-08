@@ -28,15 +28,18 @@ class AuthInterceptors extends Interceptor {
 
   @override
   Future<void> onError(
-      DioException err, ErrorInterceptorHandler handler) async {
+    DioException err,
+    ErrorInterceptorHandler handler,
+  ) async {
+    super.onError(err, handler);
     final DioException(requestOptions: RequestOptions(:extra), :response) = err;
-
     if (extra case {'DIO_AUTH_KEY': true}) {
       if (response != null && response.statusCode == HttpStatus.forbidden) {
-        Navigator.of(BarbershopNavGlobalKey.instance.navkey.currentContext!)
-            .pushNamedAndRemoveUntil('/auth/login', (route) => false);
+        Navigator.of(
+          BarbershopNavGlobalKey.instance.navKey.currentContext!,
+        ).pushNamedAndRemoveUntil('/auth/login', ((route) => false));
       }
     }
-    handler.reject(err);
+    return handler.reject(err);
   }
 }

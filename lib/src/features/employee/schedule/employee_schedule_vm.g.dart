@@ -91,9 +91,9 @@ class EmployeeScheduleVmProvider extends AutoDisposeAsyncNotifierProviderImpl<
     EmployeeScheduleVm, List<ScheduleModel>> {
   /// See also [EmployeeScheduleVm].
   EmployeeScheduleVmProvider(
-    int userId,
-    DateTime date,
-  ) : this._internal(
+    this.userId,
+    this.date,
+  ) : super.internal(
           () => EmployeeScheduleVm()
             ..userId = userId
             ..date = date,
@@ -106,58 +106,10 @@ class EmployeeScheduleVmProvider extends AutoDisposeAsyncNotifierProviderImpl<
           dependencies: EmployeeScheduleVmFamily._dependencies,
           allTransitiveDependencies:
               EmployeeScheduleVmFamily._allTransitiveDependencies,
-          userId: userId,
-          date: date,
         );
-
-  EmployeeScheduleVmProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.userId,
-    required this.date,
-  }) : super.internal();
 
   final int userId;
   final DateTime date;
-
-  @override
-  Future<List<ScheduleModel>> runNotifierBuild(
-    covariant EmployeeScheduleVm notifier,
-  ) {
-    return notifier.build(
-      userId,
-      date,
-    );
-  }
-
-  @override
-  Override overrideWith(EmployeeScheduleVm Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: EmployeeScheduleVmProvider._internal(
-        () => create()
-          ..userId = userId
-          ..date = date,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        userId: userId,
-        date: date,
-      ),
-    );
-  }
-
-  @override
-  AutoDisposeAsyncNotifierProviderElement<EmployeeScheduleVm,
-      List<ScheduleModel>> createElement() {
-    return _EmployeeScheduleVmProviderElement(this);
-  }
 
   @override
   bool operator ==(Object other) {
@@ -174,26 +126,16 @@ class EmployeeScheduleVmProvider extends AutoDisposeAsyncNotifierProviderImpl<
 
     return _SystemHash.finish(hash);
   }
-}
-
-mixin EmployeeScheduleVmRef
-    on AutoDisposeAsyncNotifierProviderRef<List<ScheduleModel>> {
-  /// The parameter `userId` of this provider.
-  int get userId;
-
-  /// The parameter `date` of this provider.
-  DateTime get date;
-}
-
-class _EmployeeScheduleVmProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<EmployeeScheduleVm,
-        List<ScheduleModel>> with EmployeeScheduleVmRef {
-  _EmployeeScheduleVmProviderElement(super.provider);
 
   @override
-  int get userId => (origin as EmployeeScheduleVmProvider).userId;
-  @override
-  DateTime get date => (origin as EmployeeScheduleVmProvider).date;
+  Future<List<ScheduleModel>> runNotifierBuild(
+    covariant EmployeeScheduleVm notifier,
+  ) {
+    return notifier.build(
+      userId,
+      date,
+    );
+  }
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member

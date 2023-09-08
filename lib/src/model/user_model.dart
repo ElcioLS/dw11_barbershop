@@ -15,7 +15,7 @@ sealed class UserModel {
     return switch (json['profile']) {
       'ADM' => UserModelADM.fromMap(json),
       'EMPLOYEE' => UserModelEmployee.fromMap(json),
-      _ => throw ArgumentError('User profile not found.'),
+      _ => throw ArgumentError('User profile not found'),
     };
   }
 }
@@ -33,33 +33,26 @@ class UserModelADM extends UserModel {
     this.workHours,
   });
 
-  Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'name': name,
-      'email': email,
-      'avatar': avatar,
-      'work_days': workDays,
-      'work_hours': workHours,
-    };
-  }
-
   factory UserModelADM.fromMap(Map<String, dynamic> json) {
     return switch (json) {
       {
         'id': final int id,
         'name': final String name,
         'email': final String email,
+        // 'work_days': final List workDays, //adicionei depois pra testar
+        // 'work_hours': final List workHours, //adicionei depois pra testar
       } =>
         UserModelADM(
           id: id,
           name: name,
           email: email,
-          avatar: json['avatar'],
+          avatar: json['avatar'] as String?,
           workDays: json['work_days']?.cast<String>(),
           workHours: json['work_hours']?.cast<int>(),
+          // workDays: workDays.cast<String>(),
+          // workHours: workHours.cast<int>(),
         ),
-      _ => throw ArgumentError('Invalid Json'),
+      _ => throw ArgumentError('Invalid Json USERMODEL: $json'),
     };
   }
 }
@@ -78,18 +71,6 @@ class UserModelEmployee extends UserModel {
     required this.workHours,
     super.avatar,
   });
-
-  Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'name': name,
-      'email': email,
-      'avatar': avatar,
-      'barbershop_id': barbershopId,
-      'work_days': workDays,
-      'work_hours': workHours,
-    };
-  }
 
   factory UserModelEmployee.fromMap(Map<String, dynamic> json) {
     return switch (json) {
@@ -110,7 +91,7 @@ class UserModelEmployee extends UserModel {
           workDays: workDays.cast<String>(),
           workHours: workHours.cast<int>(),
         ),
-      _ => throw ArgumentError('Invalid Json'),
+      _ => throw ArgumentError('Invalid UserModel_Employee JSON: $json'),
     };
   }
 }

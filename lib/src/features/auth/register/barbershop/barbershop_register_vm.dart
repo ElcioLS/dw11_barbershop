@@ -1,7 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../core/fp/either.dart';
-import '../../core/provider/application_providers.dart';
+import '../../../../core/fp/either.dart';
+import '../../../../core/provider/application_providers.dart';
 import 'barbershop_register_state.dart';
 
 part 'barbershop_register_vm.g.dart';
@@ -11,9 +11,8 @@ class BarbershopRegisterVm extends _$BarbershopRegisterVm {
   @override
   BarbershopRegisterState build() => BarbershopRegisterState.initial();
 
-  void addOrRemoveOpenDay(String weekDay) {
+  void addOrRemoveOpeningDays(String weekDay) {
     final openingDays = state.openingDays;
-
     if (openingDays.contains(weekDay)) {
       openingDays.remove(weekDay);
     } else {
@@ -22,7 +21,7 @@ class BarbershopRegisterVm extends _$BarbershopRegisterVm {
     state = state.copyWith(openingDays: openingDays);
   }
 
-  void addOrRemoveOpenHour(int hour) {
+  void addOrRemoveOpeningHour(int hour) {
     final openingHours = state.openingHours;
 
     if (openingHours.contains(hour)) {
@@ -33,7 +32,10 @@ class BarbershopRegisterVm extends _$BarbershopRegisterVm {
     state = state.copyWith(openingHours: openingHours);
   }
 
-  Future<void> register(String name, String email) async {
+  Future<void> register({
+    required String name,
+    required String email,
+  }) async {
     final repository = ref.watch(barbershopRepositoryProvider);
     final BarbershopRegisterState(:openingDays, :openingHours) = state;
 

@@ -9,18 +9,16 @@ class BarbershopRegisterState {
   final List<String> openingDays;
   final List<int> openingHours;
 
-  BarbershopRegisterState.initial()
-      : this(
-          status: BarbershopRegisterStateStatus.initial,
-          openingDays: <String>[],
-          openingHours: <int>[],
-        );
-
   BarbershopRegisterState({
     required this.status,
     required this.openingDays,
     required this.openingHours,
   });
+
+  BarbershopRegisterState.initial()
+      : status = BarbershopRegisterStateStatus.initial,
+        openingDays = [],
+        openingHours = [];
 
   BarbershopRegisterState copyWith({
     BarbershopRegisterStateStatus? status,

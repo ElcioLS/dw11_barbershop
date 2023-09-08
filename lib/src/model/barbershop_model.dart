@@ -13,15 +13,15 @@ class BarbershopModel {
     required this.openingHours,
   });
 
-  Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'name': name,
-      'email': email,
-      'opening_days': openingDays,
-      'opening_hours': openingHours,
-    };
-  }
+  // Map<String, dynamic> toMap() {
+  //   return {
+  //     'id': id,
+  //     'name': name,
+  //     'email': email,
+  //     'opening_days': openingDays,
+  //     'opening_hours': openingHours,
+  //   };
+  // }
 
   factory BarbershopModel.fromMap(Map<String, dynamic> json) {
     return switch (json) {
@@ -39,7 +39,7 @@ class BarbershopModel {
           openingDays: openingDays.cast<String>(),
           openingHours: openingHours.cast<int>(),
         ),
-      _ => throw ArgumentError('Invalid Json'),
+      _ => throw ArgumentError('Invalid BarbershopModel JSON: $json'),
     };
   }
 }

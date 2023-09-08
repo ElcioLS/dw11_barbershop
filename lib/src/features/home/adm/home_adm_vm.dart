@@ -8,13 +8,15 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'home_adm_vm.g.dart';
 
-@riverpod
+@Riverpod()
 class HomeAdmVm extends _$HomeAdmVm {
   @override
   Future<HomeAdmState> build() async {
     final repository = ref.read(userRepositoryProvider);
+
     final BarbershopModel(id: barbershopId) =
         await ref.read(getMyBarbershopProvider.future);
+
     final me = await ref.watch(getMeProvider.future);
 
     final employeesResult = await repository.getEmployees(barbershopId);

@@ -22,13 +22,10 @@ class UserRepositoryImpl implements UserRepository {
   Future<Either<AuthException, String>> login(
       String email, String password) async {
     try {
-      final Response(:data) = await restClient.unAuth.post(
-        '/auth',
-        data: {
-          'email': email,
-          'password': password,
-        },
-      );
+      final Response(:data) = await restClient.unAuth.post('/auth', data: {
+        'email': email,
+        'password': password,
+      });
 
       return Success(data['access_token']);
     } on DioException catch (e, s) {
@@ -50,9 +47,11 @@ class UserRepositoryImpl implements UserRepository {
       final Response(:data) = await restClient.auth.get('/me');
       return Success(UserModel.fromMap(data));
     } on DioException catch (e, s) {
-      log('Erro ao buscar usuário logado', error: e, stackTrace: s);
+      log('Erro ao buscar usuário logado USER_REPOSITORY_IMPL',
+          error: e, stackTrace: s);
       return Failure(
-        RepositoryException(message: 'Erro ao buscar usuário logado'),
+        RepositoryException(
+            message: 'Erro ao buscar usuário logado USER_REPOSITORY_IMPL'),
       );
     } on ArgumentError catch (e, s) {
       log('Invalid Json', error: e, stackTrace: s);

@@ -39,6 +39,8 @@ class LoginVm extends _$LoginVm {
           status: LoginStateStatus.error,
           errorMessage: () => message,
         );
+
+        break;
     }
 
     loaderHandle.close();

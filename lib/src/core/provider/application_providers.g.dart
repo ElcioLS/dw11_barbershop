@@ -80,12 +80,11 @@ final barbershopRepositoryProvider = Provider<BarbershopRepository>.internal(
 );
 
 typedef BarbershopRepositoryRef = ProviderRef<BarbershopRepository>;
-String _$getMyBarbershopHash() => r'e915c498ae4c16a130b5fb79c11bf95fad700b9e';
+String _$getMyBarbershopHash() => r'e1c72495b6a8e9b1b3af23c7ef1c9144fb45e841';
 
 /// See also [getMyBarbershop].
 @ProviderFor(getMyBarbershop)
-final getMyBarbershopProvider =
-    AutoDisposeFutureProvider<BarbershopModel>.internal(
+final getMyBarbershopProvider = FutureProvider<BarbershopModel>.internal(
   getMyBarbershop,
   name: r'getMyBarbershopProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -95,8 +94,8 @@ final getMyBarbershopProvider =
   allTransitiveDependencies: null,
 );
 
-typedef GetMyBarbershopRef = AutoDisposeFutureProviderRef<BarbershopModel>;
-String _$logoutHash() => r'2783d630873f180e00a222b4fe17036120023576';
+typedef GetMyBarbershopRef = FutureProviderRef<BarbershopModel>;
+String _$logoutHash() => r'd1382ccaba4d095ba11e122b71da66151bc6fbd6';
 
 /// See also [logout].
 @ProviderFor(logout)

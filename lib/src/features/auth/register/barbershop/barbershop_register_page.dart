@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:validatorless/validatorless.dart';
 
-import '../../core/ui/helpers/messages.dart';
-import '../../core/ui/widgets/hours_panel.dart';
-import '../../core/ui/widgets/weekdays_panel.dart';
+import '../../../../core/ui/helpers/messages.dart';
+import '../../../../core/ui/widgets/hours_panel.dart';
+import '../../../../core/ui/widgets/weekdays_panel.dart';
 import 'barbershop_register_state.dart';
 import 'barbershop_register_vm.dart';
 
@@ -43,7 +43,7 @@ class _BarbershopRegisterPageState
           Messages.showError('Desculpe: Houve um erro no registro.', context);
         case BarbershopRegisterStateStatus.success:
           Navigator.of(context)
-              .pushNamedAndRemoveUntil('/rome/adm', (route) => false);
+              .pushNamedAndRemoveUntil('/home/adm', (route) => false);
       }
     });
 
@@ -78,7 +78,7 @@ class _BarbershopRegisterPageState
                 const SizedBox(height: 24),
                 WeekdaysPanel(
                   onDayPressed: (value) {
-                    barbershopRegisterVm.addOrRemoveOpenDay(value);
+                    barbershopRegisterVm.addOrRemoveOpeningDays(value);
                   },
                 ),
                 const SizedBox(height: 24),
@@ -86,7 +86,7 @@ class _BarbershopRegisterPageState
                   startTime: 6,
                   endTime: 23,
                   onHourPressed: (int value) {
-                    barbershopRegisterVm.addOrRemoveOpenHour(value);
+                    barbershopRegisterVm.addOrRemoveOpeningHour(value);
                   },
                 ),
                 const SizedBox(height: 24),
@@ -100,7 +100,9 @@ class _BarbershopRegisterPageState
                         Messages.showError('Formulário inválido', context);
                       case true:
                         barbershopRegisterVm.register(
-                            nameEC.text, emailEC.text);
+                          name: nameEC.text,
+                          email: emailEC.text,
+                        );
                     }
                   },
                   child: const Text('CADASTRAR ESTABELECIMENTO'),

@@ -34,7 +34,7 @@ class ScheduleModel {
           hour: hour,
         );
       case _:
-        throw ArgumentError('Invalid JSON');
+        throw ArgumentError('Invalid ScheduleModel JSON: $json');
     }
   }
 }

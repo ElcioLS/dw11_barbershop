@@ -12,8 +12,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'features/auth/login/login_page.dart';
-import 'features/register/barbershop_register_page.dart';
-import 'features/register/user/user_register_page.dart';
+import 'features/auth/register/barbershop/barbershop_register_page.dart';
+import 'features/auth/register/user/user_register_page.dart';
 
 class BarbershopApp extends StatelessWidget {
   const BarbershopApp({super.key});
@@ -28,7 +28,8 @@ class BarbershopApp extends StatelessWidget {
           title: 'Dart Week 2023',
           theme: BarbershopTheme.themeData,
           navigatorObservers: [asyncNavigatorObserver],
-          navigatorKey: BarbershopNavGlobalKey.instance.navkey,
+          navigatorKey: BarbershopNavGlobalKey.instance.navKey,
+          // home: const SplashPage(),
           routes: {
             '/': (_) => const SplashPage(),
             '/auth/login': (_) => const LoginPage(),

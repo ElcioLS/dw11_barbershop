@@ -43,10 +43,9 @@ Future<UserModel> getMe(GetMeRef ref) async {
 BarbershopRepository barbershopRepository(BarbershopRepositoryRef ref) =>
     BarbershopRepositoryImpl(restClient: ref.watch(restClientProvider));
 
-@riverpod
+@Riverpod(keepAlive: true)
 Future<BarbershopModel> getMyBarbershop(GetMyBarbershopRef ref) async {
   final userModel = await ref.watch(getMeProvider.future);
-
   final barbershopRepository = ref.watch(barbershopRepositoryProvider);
   final result = await barbershopRepository.getMyBarbershop(userModel);
 
@@ -58,11 +57,11 @@ Future<BarbershopModel> getMyBarbershop(GetMyBarbershopRef ref) async {
 
 @riverpod
 Future<void> logout(LogoutRef ref) async {
-  final sp = await SharedPreferences.getInstance();
-  sp.clear();
+  final sharedPreferences = await SharedPreferences.getInstance();
+  sharedPreferences.clear();
   ref.invalidate(getMeProvider);
   ref.invalidate(getMyBarbershopProvider);
-  Navigator.of(BarbershopNavGlobalKey.instance.navkey.currentContext!)
+  Navigator.of(BarbershopNavGlobalKey.instance.navKey.currentContext!)
       .pushNamedAndRemoveUntil('/auth/login', (route) => false);
 }
 
